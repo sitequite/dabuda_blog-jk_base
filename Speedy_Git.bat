@@ -21,16 +21,18 @@ echo    2. Rebuild with Jekyll and Push with custom message.
 echo    3. Sync both repos with original repos.
 echo ### Choose option for the main repo ###
 echo   Available commands are:
-echo    4. Pull new updates from github.com...
-echo    5. Add an upstream remote from a forked repo.
-echo    6. Show me all remotes...
+echo    4. Push new commit.
+echo    5. Pull new updates from github.com...
+echo    6. Add an upstream remote from a forked repo.
+echo    7. Show me all remotes...
 echo ### Choose option for the second repo - folder site ###
 echo   Available commands are:
-echo    7. Pull new updates from github.com...
-echo    8. Add an upstream remote from a forked repo.
-echo    9. Show me all remotes...
+echo    8. Push new commit.
+echo    9. Pull new updates from github.com...
+echo    10. Add an upstream remote from a forked repo.
+echo    11. Show me all remotes...
 echo ### Exit ###
-echo    10. Exit.
+echo    12. Exit.
 set /p "option=### Make your choice:"
 echo.
 echo =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
@@ -104,6 +106,16 @@ IF "%option%"=="1" (
 	timeout /t %timeOutNum%
 	exit
 ) ELSE IF "%option%"=="4" (
+	REM push updates from root repo
+	call git add .
+	call git commit -a -m "Auto commit from base repo by Speedy_Git on %currentTime%"
+	call git push origin master
+	echo =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+	echo.
+	echo ### Great, everything went well! Press any key for exit.
+	timeout /t %timeOutNum%
+	exit
+) ELSE IF "%option%"=="5" (
 	REM pull updates from root repo
 	call git pull origin master
 	echo =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
@@ -111,7 +123,7 @@ IF "%option%"=="1" (
 	echo ### Great, everything went well! Press any key for exit.
 	timeout /t %timeOutNum%
 	exit
-) ELSE IF "%option%"=="5" (
+) ELSE IF "%option%"=="6" (
 	REM set upstream link for the root repo
 	set /p "myUrlOne=### Paste the URL from the original(forked) repo and press Enter:"
 	timeout /t 5
@@ -123,7 +135,7 @@ IF "%option%"=="1" (
 	echo ### Great, everything went well! Press any key for exit.
     timeout /t %timeOutNum%
 	exit
-) ELSE IF "%option%"=="6" (
+) ELSE IF "%option%"=="7" (
 	REM show all remote links for the root repo
 	call git remote -v
     echo =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
@@ -131,16 +143,26 @@ IF "%option%"=="1" (
 	echo ### Great, everything went well! Press any key for exit.
     timeout /t 30
 	exit
-) ELSE IF "%option%"=="7" (
-    REM pull updates from site repo
+) ELSE IF "%option%"=="8" (
+    REM push updates from site repo
 	call cd _site
+	call git add .
+	call git commit -a -m "Auto commit from base repo by Speedy_Git on %currentTime%"
+	call git push origin master
+	echo =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+	echo.
+	echo ### Great, everything went well! Press any key for exit.
+	timeout /t %timeOutNum%
+	exit
+) ELSE IF "%option%"=="9" (
+	REM pull updates from root repo
 	call git pull origin master
 	echo =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 	echo.
 	echo ### Great, everything went well! Press any key for exit.
 	timeout /t %timeOutNum%
 	exit
-) ELSE IF "%option%"=="8" (
+) ELSE IF "%option%"=="10" (
     REM set upstream link for the site repo
 	call cd _site
 	set /p "myUrlTwo=### Paste the URL from the original(forked) repo and press Enter:"
@@ -153,7 +175,7 @@ IF "%option%"=="1" (
 	echo ### Great, everything went well! Press any key for exit.
     timeout /t %timeOutNum%
 	exit
-) ELSE IF "%option%"=="9" (
+) ELSE IF "%option%"=="11" (
 	REM show all remote links for the site repo
 	call cd _site
 	call git remote -v
@@ -162,7 +184,7 @@ IF "%option%"=="1" (
 	echo ### Great, everything went well! Press any key for exit.
     timeout /t 30
 	exit
-) ELSE IF "%option%"=="10" (
+) ELSE IF "%option%"=="12" (
 	exit
 ) ELSE (
     exit
