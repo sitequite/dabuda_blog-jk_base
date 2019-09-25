@@ -84,7 +84,7 @@ IF "%option%"=="1" (
 	timeout /t %timeOutNum%
 	exit
 ) ELSE IF "%option%"=="3" (
-    REM sync both repos with original repos
+    REM sync both forked repos with original repos
 	call git fetch upstream
 	echo ### All updates are in your upstream branch. Now, press any key to trigger the merge!
     timeout /t -1
