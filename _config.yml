@@ -1,0 +1,84 @@
+# Site
+name: 'DaBuda.net'
+description: 'Вдъхновение | Личностно развитие | Български дух - Уебсайт на Даниел Богдански.'
+logo: 'assets/images/logo.png'
+favicon: 'assets/images/favicon.ico'
+baseurl: 'https://dabuda.net'
+disqus: 'dabuda'
+email: 'dabudawebsite@gmail.com'
+mailchimp-list: ''
+
+include: ["_pages"]
+permalink: /:title/
+
+
+# Plugins
+plugins: 
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-paginate-v2
+  - jekyll-seo-tag
+  
+authors:
+    sal:
+      name:           Sal
+      site:           https://www.wowthemes.net
+      avatar:         /assets/images/avatar1.jpg
+      bio:            "Hi, I am Sal, the author of Mundana, the theme you're currently previewing. I hope you like it!"
+      email:          wowthemesnet@gmail.com
+      twitter:        https://twitter.com/wowthemesnet
+
+    jane:
+      name:           Jane
+      site:           https://www.wowthemes.net
+      avatar:         /assets/images/avatar2.jpg
+      bio:            "Blogger, fashionista, love to explore new ideas and write on my morning coffee!"
+      email:          fakemail@gmail.com
+      twitter:        https://twitter.com/wowthemesnet
+
+
+    daniel:
+      name:           Даниел Богдански
+      site:           https://dabuda.net
+      avatar:         /assets/images/avatar1.jpg
+      bio:            "Здравейте, аз съм автора на Dabuda.net. В момента съм на 22 години и уча международен бизнес в Холандия."
+      email:          fakemail@gmail.com
+      facebook:       https://www.facebook.com/daniel.bogdanski.7
+ 
+# Defaults
+defaults:
+
+  # all posts
+  - scope:
+      path: "_posts"
+    values:
+      layout: post
+      author: daniel
+      avatar: /assets/images/avatar1.jpg
+      
+  # all pages
+  - scope:
+      path: "_pages"
+    values:
+      layout: page
+      
+# Syntax
+markdown: kramdown
+highlighter: rouge
+
+# Paginate
+#paginate: 10
+#paginator_path: "blog/page:num"
+
+# Pagination Settings
+pagination:
+  enabled: true
+  per_page: 4
+  permalink: '/page:num/'
+  title: ':title - страница :num от :max'
+  limit: 0
+  sort_field: 'date'
+  sort_reverse: true
+
+# Exclude metadata and development time dependencies (like Grunt plugins)
+exclude: [README.markdown, package.json, grunt.js, Gruntfile.js, Gruntfile.coffee, node_modules, Speedy_Git.bat]
